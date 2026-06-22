@@ -1,0 +1,9 @@
+# Secrets / local environment — never commit real credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# macOS
+.DS_Store
