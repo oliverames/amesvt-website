@@ -1,4 +1,4 @@
-# Secrets / local environment — never commit real credentials
+# Secrets and local environment. Never commit real credentials.
 .env
 .env.*
 !.env.example
