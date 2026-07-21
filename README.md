@@ -25,7 +25,8 @@ Then open `http://localhost:8000`.
 Deploy the repository root to the `amesvt-website` Cloudflare Pages project:
 
 ```sh
-npx wrangler pages deploy . --project-name amesvt-website --branch main
+python3 scripts/build.py
+npx wrangler pages deploy _site --project-name amesvt-website --branch main
 ```
 
 After deployment, check the home page and both Matrix discovery endpoints:
