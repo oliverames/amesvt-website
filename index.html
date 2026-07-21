@@ -3,139 +3,222 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Oliver Ames — Content Strategist & Software Developer</title>
-    <meta name="description" content="Oliver Ames is a content strategist, software tinkerer, and video producer in Vermont. Personal technology services and portfolio.">
-    <meta name="keywords" content="Oliver Ames, content strategy, software development, Vermont, technology, consulting">
+    <title>amesvt.com | Oliver's utilities</title>
+    <meta name="description" content="A simple directory for Oliver Ames' personal utilities and service endpoints.">
     <meta name="author" content="Oliver Ames">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-    <meta property="og:site_name" content="amesvt.com">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:title" content="Oliver Ames — Content Strategist & Software Developer">
-    <meta property="og:description" content="Content strategist, software tinkerer, and video producer in Vermont.">
-    <meta property="og:url" content="https://amesvt.com">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Oliver Ames">
-    <meta name="twitter:description" content="Content strategist, software tinkerer, and video producer in Vermont.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="light dark">
     <link rel="canonical" href="https://amesvt.com/">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Oliver Ames",
-        "url": "https://amesvt.com",
-        "jobTitle": "Content Strategist & Software Developer",
-        "address": {
-            "@type": "PostalAddress",
-            "addressRegion": "VT",
-            "addressCountry": "US"
-        },
-        "sameAs": [
-            "https://github.com/oliverames",
-            "https://linkedin.com/in/oliverames",
-            "https://bsky.app/profile/oliverames.bsky.social",
-            "https://mastodon.social/@oliverames",
-            "https://instagram.com/oliverames"
-        ]
-    }
-    </script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            background: #faf8f5;
-            color: #2c2c2c;
+        :root {
+            color-scheme: light dark;
+            --background: #f3f5f4;
+            --surface: rgba(255, 255, 255, 0.82);
+            --surface-hover: #ffffff;
+            --text: #17201d;
+            --muted: #60706a;
+            --border: #dce4e0;
+            --accent: #1f6b52;
+            --accent-soft: #dcefe8;
+            --shadow: 0 18px 50px rgba(32, 55, 47, 0.08);
         }
+
         @media (prefers-color-scheme: dark) {
-            body { background: #1c2929; color: #e8e4df; }
-            a { color: #d4a853; }
-            a:hover { color: #e8c06a; }
-            .divider { border-color: #3a4a4a; }
+            :root {
+                --background: #101714;
+                --surface: rgba(28, 39, 35, 0.88);
+                --surface-hover: #26342f;
+                --text: #eef5f1;
+                --muted: #a3b4ad;
+                --border: #35463f;
+                --accent: #79cdaa;
+                --accent-soft: #183d30;
+                --shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+            }
         }
-        .card {
-            max-width: 480px;
-            width: 100%;
-        }
-        h1 {
-            font-size: 1.75rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
-        .tagline {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 1.5rem;
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: clamp(1.5rem, 4vw, 4rem) 1.25rem;
+            background:
+                radial-gradient(circle at top left, var(--accent-soft), transparent 34rem),
+                var(--background);
+            color: var(--text);
+            font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             line-height: 1.5;
         }
-        @media (prefers-color-scheme: dark) {
-            .tagline { color: #a0a0a0; }
+
+        main {
+            width: min(100%, 760px);
+            margin: 0 auto;
         }
-        .divider {
-            border: none;
-            border-top: 1px solid #e0dcd7;
-            margin: 1.5rem 0;
+
+        header {
+            margin-bottom: 2.25rem;
         }
-        .links {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem 1.5rem;
-        }
-        a {
-            color: #8b6914;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.15s;
-        }
-        a:hover { color: #b8860b; text-decoration: underline; }
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
+
+        .eyebrow {
+            margin: 0 0 0.55rem;
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #999;
-            margin-bottom: 0.75rem;
         }
-        @media (prefers-color-scheme: dark) {
-            .section-label { color: #777; }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.2rem, 8vw, 4.4rem);
+            line-height: 1;
+            letter-spacing: -0.055em;
         }
-        .section { margin-bottom: 1.5rem; }
+
+        .intro {
+            max-width: 38rem;
+            margin: 1rem 0 0;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        section + section {
+            margin-top: 2rem;
+        }
+
+        h2 {
+            margin: 0 0 0.75rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .service {
+            display: block;
+            min-height: 7rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            color: inherit;
+            text-decoration: none;
+            transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+        }
+
+        .service:hover,
+        .service:focus-visible {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            background: var(--surface-hover);
+        }
+
+        .service:focus-visible {
+            outline: 3px solid var(--accent-soft);
+            outline-offset: 2px;
+        }
+
+        .service strong,
+        .service span {
+            display: block;
+        }
+
+        .service strong {
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .service span {
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        footer {
+            margin-top: 2.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            font-weight: 650;
+        }
+
+        @media (max-width: 560px) {
+            .grid { grid-template-columns: 1fr; }
+            .service { min-height: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .service { transition: none; }
+        }
     </style>
 </head>
 <body>
-    <main class="card">
-        <h1>Oliver Ames</h1>
-        <p class="tagline">Content strategist, software tinkerer, and video producer in Vermont.</p>
+    <main>
+        <header>
+            <p class="eyebrow">amesvt.com</p>
+            <h1>Oliver's utilities</h1>
+            <p class="intro">A quiet front door for personal services, media, and developer tools.</p>
+        </header>
 
-        <div class="section">
-            <p class="section-label">Find me</p>
-            <ul class="links">
-                <li><a href="https://linkedin.com/in/oliverames" rel="me noopener" target="_blank">LinkedIn</a></li>
-                <li><a href="https://github.com/oliverames" rel="me noopener" target="_blank">GitHub</a></li>
-                <li><a href="https://bsky.app/profile/oliverames.bsky.social" rel="me noopener" target="_blank">Bluesky</a></li>
-                <li><a href="https://mastodon.social/@oliverames" rel="me noopener" target="_blank">Mastodon</a></li>
-                <li><a href="https://instagram.com/oliverames" rel="me noopener" target="_blank">Instagram</a></li>
-            </ul>
-        </div>
+        <section aria-labelledby="home-services">
+            <h2 id="home-services">Home services</h2>
+            <div class="grid">
+                <a class="service" href="https://home.amesvt.com">
+                    <strong>Home</strong>
+                    <span>Home Assistant</span>
+                </a>
+                <a class="service" href="https://abs.amesvt.com">
+                    <strong>Audiobooks</strong>
+                    <span>Audiobookshelf library</span>
+                </a>
+                <a class="service" href="https://channels.amesvt.com">
+                    <strong>Channels</strong>
+                    <span>Live TV and DVR</span>
+                </a>
+                <a class="service" href="https://plex.amesvt.com">
+                    <strong>Plex</strong>
+                    <span>Media server management</span>
+                </a>
+            </div>
+        </section>
 
-        <hr class="divider">
+        <section aria-labelledby="developer-services">
+            <h2 id="developer-services">Developer services</h2>
+            <div class="grid">
+                <a class="service" href="https://mcp.amesvt.com">
+                    <strong>Bridgeport</strong>
+                    <span>Personal MCP gateway</span>
+                </a>
+                <a class="service" href="https://applecore.amesvt.com/mcp">
+                    <strong>Apple Core</strong>
+                    <span>Apple services endpoint</span>
+                </a>
+                <a class="service" href="https://ynab.amesvt.com">
+                    <strong>YNAB</strong>
+                    <span>Hosted connector</span>
+                </a>
+                <a class="service" href="https://drafts.amesvt.com">
+                    <strong>Drafts</strong>
+                    <span>Web capture utility</span>
+                </a>
+            </div>
+        </section>
 
-        <div class="section">
-            <p class="section-label">Also at</p>
-            <ul class="links">
-                <li><a href="https://ames.consulting">ames.consulting</a></li>
-            </ul>
-        </div>
+        <footer>
+            Looking for Oliver's public work? Visit <a href="https://ames.consulting">ames.consulting</a>.
+        </footer>
     </main>
 </body>
 </html>

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the files GitHub Pages publishes for amesvt.com."""
+"""Validate the files Cloudflare Pages publishes for amesvt.com."""
 
 from __future__ import annotations
 
@@ -55,9 +55,23 @@ def main() -> None:
     parser.feed(index)
     parser.close()
 
-    assert "Oliver Ames" in "".join(parser.title_parts), "page title is missing"
+    assert "amesvt.com" in "".join(parser.title_parts), "page title is missing"
     assert parser.has_main, "page needs a main landmark"
     assert parser.canonical_href == "https://amesvt.com/", "canonical URL changed"
+    assert 'name="robots" content="noindex, nofollow"' in index
+    assert "https://ames.consulting" in index
+    assert (ROOT / "favicon.svg").is_file(), "favicon is missing"
+    for hostname in (
+        "home.amesvt.com",
+        "abs.amesvt.com",
+        "channels.amesvt.com",
+        "plex.amesvt.com",
+        "mcp.amesvt.com",
+        "applecore.amesvt.com",
+        "ynab.amesvt.com",
+        "drafts.amesvt.com",
+    ):
+        assert hostname in index, f"missing utility link: {hostname}"
 
     server = read_json(ROOT / ".well-known/matrix/server")
     client = read_json(ROOT / ".well-known/matrix/client")
@@ -66,8 +80,11 @@ def main() -> None:
         "m.homeserver": {"base_url": "https://matrix.amesvt.com"}
     }
 
-    assert (ROOT / "CNAME").read_text(encoding="utf-8").strip() == "amesvt.com"
-    print("Validated the site, CNAME, and Matrix discovery files.")
+    headers = (ROOT / "_headers").read_text(encoding="utf-8")
+    assert "X-Robots-Tag: noindex, nofollow" in headers
+    assert "Access-Control-Allow-Origin: *" in headers
+    assert not (ROOT / "CNAME").exists(), "GitHub Pages CNAME file remains"
+    print("Validated the Cloudflare site and Matrix discovery files.")
 
 
 if __name__ == "__main__":
