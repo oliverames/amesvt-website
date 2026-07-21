@@ -20,6 +20,19 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
+      - name: Upload website image to R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          AWS_EC2_METADATA_DISABLED: "true"
+          R2_ENDPOINT: https://${{ secrets.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com
+        run: |
+          aws s3 cp favicon.svg s3://ames-website-assets/amesvt/favicon.svg \
+            --endpoint-url "$R2_ENDPOINT" \
+            --content-type image/svg+xml \
+            --cache-control "public, max-age=3600, stale-while-revalidate=604800"
+
       - name: Build static artifact
         run: python3 scripts/build.py
 
@@ -33,3 +46,4 @@ jobs:
         run: |
           test "$(curl -sS -o /dev/null -w '%{http_code}' https://amesvt.com/)" = "200"
           test "$(curl -sS -o /dev/null -w '%{http_code}' https://www.amesvt.com/)" = "200"
+          test "$(curl -sS -o /dev/null -w '%{http_code}' https://assets.amesvt.com/amesvt/favicon.svg)" = "200"

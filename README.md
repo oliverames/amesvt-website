@@ -2,7 +2,7 @@
 
 This repository publishes the small Cloudflare Pages site at [amesvt.com](https://amesvt.com). It is a directory for Oliver's personal utilities; [ames.consulting](https://ames.consulting) is the public-facing site. It also serves Matrix client and server discovery files from `/.well-known/matrix/`.
 
-There is no build step. Cloudflare Pages serves `index.html`, `_headers`, and the `.well-known` directory directly from `main`.
+GitHub remains the source of truth. A push to `main` uploads `favicon.svg` to the dedicated `ames-website-assets` R2 bucket, builds the small static payload, and deploys it to Cloudflare Pages. The production page uses `assets.amesvt.com` for the favicon while the source file stays in Git for local editing.
 
 ## Check changes locally
 
